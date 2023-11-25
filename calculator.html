@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="calculator1.css">
+    <style type="text/css">
+      .calculator {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+#display {
+    width: 100%;
+    padding: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.operator {
+    background-color:blueviolet;
+    color: white;
+    border: 1px solid #f0a500;
+}
+
+.clear {
+    background-color: black;
+    color: white;
+    border: 1px solid #ff6666;
+}
+
+.equals {
+    background-color: #4caf50;
+    color: white;
+    border: 1px solid #4caf50;
+}
+
+    </style>
+</head>        
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button class="operator" onclick="toDisplay('+')">+</button>
+            <button class="operator" onclick="toDisplay('-')">-</button>
+            <button class="operator" onclick="toDisplay('*')">*</button>
+            <button class="operator" onclick="toDisplay('/')">/</button>
+            <button onclick="toDisplay('9')">9</button>
+            <button onclick="toDisplay('8')">8</button>
+            <button onclick="toDisplay('7')">7</button>
+            <button onclick="toDisplay('6')">6</button>
+            <button onclick="toDisplay('5')">5</button>
+            <button onclick="toDisplay('4')">4</button>
+            <button onclick="toDisplay('3')">3</button>
+            <button onclick="toDisplay('2')">2</button>
+            <button onclick="toDisplay('1')">1</button>
+            <button onclick="toDisplay('0')">0</button>
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="equals" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function toDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                const result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
